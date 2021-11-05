@@ -1,11 +1,9 @@
 class Vote{
+  late String id;
   late String title;
   late String numberOfVotes;
+  late String numberOfPictures;
+  late String deadline;
 
-  Vote(this.title, this.numberOfVotes);
-
-  Vote.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    numberOfVotes = json['numberOfVotes'];
-  }
+  Vote(this.id, this.title, this.numberOfVotes, this.numberOfPictures, this.deadline);
 }
