@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 
 class VoteFragment extends StatefulWidget {
-  const VoteFragment({Key? key}) : super(key: key);
+  const VoteFragment({Key? key, required this.uuid}) : super(key: key);
+
+  final String uuid;
 
   @override
   _VoteFragmentState createState() => _VoteFragmentState();
@@ -22,17 +24,20 @@ class _VoteFragmentState extends State<VoteFragment> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 4,
-      children: [
-        ...myImages.map(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("TestEvent")
+      ),
+      body: GridView.count(
+        crossAxisCount: 4,
+        children: [
+          ...myImages.map(
                 (i) => Column(
-                  mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.min,
+            ),
           ),
-        ),
-      ],
+        ],
+      )
     );
-
-
   }
 }
