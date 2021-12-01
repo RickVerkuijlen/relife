@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'fragments/account_fragment.dart';
 import 'fragments/add_fragment.dart';
 import 'fragments/home_fragment.dart';
+import 'fragments/shop_fragment.dart';
 
 class MainBottomClass extends StatefulWidget {
   const MainBottomClass({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _MainBottomClassState extends State<MainBottomClass> {
 
   final widgetOptions = [
     const HomeFragment(),
+    const ShopFragment(),
     const AddFragment(),
     const AccountFragment()
   ];
@@ -27,7 +29,7 @@ class _MainBottomClassState extends State<MainBottomClass> {
     });
   }
 
-  final widgetTitle = ["Home", "Add", "Account"];
+  final widgetTitle = ["Home", "Shop", "Add", "Account"];
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,10 @@ class _MainBottomClassState extends State<MainBottomClass> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home, size: 30),
             label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag, size: 30),
+            label: "Shop",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_a_photo_rounded, size: 30),

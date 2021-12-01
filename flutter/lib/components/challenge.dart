@@ -21,12 +21,14 @@ class Challenge {
 
   factory Challenge.fromJson(Map<String, dynamic> json) {
     DateTime submitDeadline = DateTime.fromMillisecondsSinceEpoch(json['submitDeadline']);
-    String formattedDate = DateFormat('dd-MMMM-yyyy').format(submitDeadline);
+    DateTime voteDeadline = DateTime.fromMillisecondsSinceEpoch(json['voteDeadline']);
+    String formattedSubmitDeadline = DateFormat('dd-MMMM-yyyy').format(submitDeadline);
+    String formattedVoteDeadline = DateFormat('dd-MMMM-yyyy').format(voteDeadline);
     return Challenge(
         uuid: json['uuid'],
         name: json['name'],
-        submitDeadline: formattedDate,
-        voteDeadline: formattedDate,
+        submitDeadline: formattedSubmitDeadline,
+        voteDeadline: formattedVoteDeadline,
         amountOfPictures: json['amountOfPictures'],
         amountOfVotes: json['amountOfVotes']
     );

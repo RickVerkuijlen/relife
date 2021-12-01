@@ -9,6 +9,10 @@ class HttpService {
 
     var responseJson = jsonDecode(response.body);
 
-    return (responseJson as List).map((m) => Challenge.fromJson(m)).toList();
+    List<Challenge> result = (responseJson as List).map((m) => Challenge.fromJson(m)).toList();
+
+    result.sort((a, b) => a.submitDeadline.compareTo(b.submitDeadline));
+
+    return result;
   }
 }

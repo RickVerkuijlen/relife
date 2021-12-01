@@ -5,15 +5,13 @@ import nl.rickverkuijlen.relife.logic.ChallengeLogic;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/challenge")
-public class GreetingResource {
+public class ChallengeResource {
 
     @Inject
     ChallengeLogic challengeLogic;
@@ -21,13 +19,14 @@ public class GreetingResource {
     @Inject
     Logger logger;
 
-    @GET
+    @GET()
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllChallenges() {
+    public Response getAllChallenges(@QueryParam("deadlineType") String deadlineType) {
         logger.info("GetAllChallenges");
+        System.out.println(deadlineType);
 
         try {
-            List<Challenge> result = this.challengeLogic.getAllChallenges();
+            List<Challenge> result = this.challengeLogic.getAllChallengesByType(deadlineType);
             return Response
                     .status(Response.Status.OK)
                     .entity(result)

@@ -1,8 +1,10 @@
 package nl.rickverkuijlen.relife.logic;
 
 import nl.rickverkuijlen.relife.entity.Challenge;
+import nl.rickverkuijlen.relife.repository.ChallengeRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,19 +16,26 @@ import java.util.UUID;
 @ApplicationScoped
 public class ChallengeLogic {
 
-    public List<Challenge> getAllChallenges() throws ParseException {
-        DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String dateString = "19-07-2021";
+    @Inject
+    ChallengeRepository challengeRepository;
+
+    public List<Challenge> getAllChallengesByType(String deadlineType) throws ParseException {
         List<Challenge> result = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            result.add(Challenge.builder()
-                    .uuid(UUID.randomUUID())
-                    .name("TestEvent " + i)
-                    .amountOfPictures(105 + i)
-                    .amountOfVotes(111 + i)
-                    .submitDeadline(sdf.parse(dateString))
-                    .voteDeadline(new Date())
-                    .build());
+
+        if(deadlineType == null) {
+            deadlineType = "";
+        }
+
+        switch(deadlineType) {
+            case "submit":
+                result = this.challengeRepository.getAllChallengesBySubmitDeadline();
+                break;
+            case "vote":
+                result = this.challengeRepository.getAllChallengesByVoteDeadline();
+                break;
+            default:
+                result = this.challengeRepository.getAllChallenges();
+                break;
         }
         return result;
     }
