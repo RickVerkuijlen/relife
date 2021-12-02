@@ -1,0 +1,5 @@
+nl\rickverkuijlen\relife\resources\ChallengeResource.class
+nl\rickverkuijlen\relife\entity\Challenge$ChallengeBuilder.class
+nl\rickverkuijlen\relife\logic\ChallengeLogic.class
+nl\rickverkuijlen\relife\repository\ChallengeRepository.class
+nl\rickverkuijlen\relife\entity\Challenge.class
