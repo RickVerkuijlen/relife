@@ -1,5 +1,7 @@
 import 'package:am_awareness/components/challenge.dart';
 import 'package:am_awareness/components/vote.dart';
+
+import 'package:am_awareness/fragments/vote_fragment.dart';
 import 'package:am_awareness/services/http_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -130,6 +132,10 @@ class _HomeFragmentState extends State<HomeFragment> {
   }
 
   void sendToVote(String id) {
-    debugPrint(id);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const VoteFragment(uuid: "asdf")
+        ));
   }
 }
