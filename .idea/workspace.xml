@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f55cef04-7450-48ae-a8f3-20e6d15e402f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter/lib/fragments/vote_fragment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/lib/fragments/vote_fragment.dart" afterDir="false" />
-    </list>
+    <list default="true" id="f55cef04-7450-48ae-a8f3-20e6d15e402f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +68,7 @@
       <workItem from="1638348971398" duration="618000" />
       <workItem from="1638350797915" duration="575000" />
       <workItem from="1638351409218" duration="34000" />
+      <workItem from="1638438820860" duration="69000" />
     </task>
     <servers />
   </component>
