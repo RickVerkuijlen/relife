@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1857c2a8-cab4-4142-9a7b-06ff2c8ea0d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../flutter/lib/fragments/shop_fragment.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/repository/ChallengeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/components/challenge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/components/challenge.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/fragments/home_fragment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/fragments/home_fragment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/main_bottom_class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/main_bottom_class.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/services/http_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/services/http_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/entity/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/entity/Challenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/logic/ChallengeLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/logic/ChallengeLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/resources/GreetingResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/resources/ChallengeResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/GreetingResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/ChallengeResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/NativeGreetingResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/NativeChallengeResourceIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/target/classes/nl/rickverkuijlen/relife/logic/ChallengeLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/classes/nl/rickverkuijlen/relife/logic/ChallengeLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-service/target/quarkus/bootstrap/dev-app-model.dat" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/quarkus/bootstrap/dev-app-model.dat" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="21gBh9hUmbdS0tRDXBONR2vAWTB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1857c2a8-cab4-4142-9a7b-06ff2c8ea0d6" name="Default Changelist" comment="" />
+      <created>1638352966479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638352966479</updated>
+      <workItem from="1638352967778" duration="8909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
