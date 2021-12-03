@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    build:
+      context: gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - challenge-service
+    ports:
+      - 80:80
+  
+  challenge-service:
+    build:
+      context: challenge-service
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - 8081:80
+    restart: on-failure
+  
+  challenge-mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - challenge_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=challenge
+      - MYSQL_USER=challenge
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
+  
+volumes:
+  challenge_data:
+    driver: local
