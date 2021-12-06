@@ -6,9 +6,10 @@ import 'package:am_awareness/components/photo.dart';
 import 'package:am_awareness/fragments/vote_detail_fragment.dart';
 
 class VoteFragment extends StatefulWidget {
-  const VoteFragment({Key? key, required this.uuid}) : super(key: key);
+  const VoteFragment({Key? key, required this.uuid, required this.name}) : super(key: key);
 
   final String uuid;
+  final String name;
 
   @override
   _VoteFragmentState createState() => _VoteFragmentState();
@@ -60,7 +61,7 @@ class _VoteFragmentState extends State<VoteFragment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Test Event')),
+      appBar: AppBar(title: Text(widget.name)),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisSpacing: 0,
