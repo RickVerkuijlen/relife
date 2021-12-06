@@ -5,8 +5,7 @@ import nl.rickverkuijlen.relife.entity.Vote;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
-import java.util.List;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class VoteRepository {
@@ -14,7 +13,8 @@ public class VoteRepository {
     @Inject
     EntityManager entityManager;
 
-    public Vote submitVote(Vote vote) {
-        return vote;
+    @Transactional
+    public void submitVote(Vote vote) {
+        entityManager.persist(vote);
     }
 }

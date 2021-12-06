@@ -17,6 +17,14 @@ services:
     ports:
       - 8081:80
     restart: on-failure
+
+  vote-service:
+    build:
+      context: vote-service
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - 8082:80
+    restart: on-failure
   
   relife-mysql:
     image: mysql:5.7
@@ -26,7 +34,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=challenge
-      - MYSQL_USER=relife
+      - MYSQL_USER=challenge
       - MYSQL_PASSWORD=password
     ports:
       - 3306:3306

@@ -1,5 +1,6 @@
 package nl.rickverkuijlen.relife.resources;
 
+import nl.rickverkuijlen.relife.entity.NewVote;
 import nl.rickverkuijlen.relife.entity.Vote;
 import nl.rickverkuijlen.relife.logic.VoteLogic;
 import org.jboss.logging.Logger;
@@ -22,7 +23,9 @@ public class VoteResource {
     @POST()
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response submitVote(Vote vote) {
+    public Response submitVote(NewVote vote) {
+        logger.info("submitVote: " + vote);
+
         try {
             return Response
                     .status(Response.Status.CREATED)
