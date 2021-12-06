@@ -25,7 +25,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                      onTap: () => sendToVote(snapshot.data![index].uuid),
+                      onTap: () => sendToVote(snapshot.data![index].uuid, snapshot.data![index].name),
                       child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
@@ -143,15 +143,15 @@ class _HomeFragmentState extends State<HomeFragment> {
                               ]))));
                 },
               )
-            : Center(
+            : const Center(
                 child: CircularProgressIndicator(),
               ));
   }
 
-  void sendToVote(String id) {
+  void sendToVote(String id, String name) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => const VoteFragment(uuid: "asdf")));
+            builder: (context) => VoteFragment(uuid: id, name: name)));
   }
 }
