@@ -145,6 +145,8 @@ class _VoteFragmentState extends State<VoteFragment> {
                     color: saved.contains(_photos[index].uuid)
                         ? Colors.green
                         : null,
+                    size: 100,
+
                   ),
                 )
               ]));
