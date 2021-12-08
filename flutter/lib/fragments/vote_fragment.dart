@@ -111,66 +111,69 @@ class _VoteFragmentState extends State<VoteFragment> {
     final canSubmit = saved.length == percentagePhoto.round();
     final amountOfVotes = percentagePhoto.round();
 
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.name)),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: 0,
-          mainAxisSpacing: 0,
-          crossAxisCount: 4,
-        ),
-        itemCount: _photos.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-              onTap: () {
-                setState(() {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                          widgetPhoto: _photos[index],
-                        ),
-                      ));
-                });
-                debugPrint(amountOfVotes.toString());
-              },
-              child: Stack(children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(_photos[index].image),
+    return GestureDetector(
+      onTap: (){
+        setState(() {});
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(widget.name)),
+        body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
+            crossAxisCount: 4,
+          ),
+          itemCount: _photos.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+                onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(
+                            widgetPhoto: _photos[index],
+                          ),
+                        ));
+                  debugPrint(amountOfVotes.toString());
+                },
+                child: Stack(children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(_photos[index].image),
+                      ),
                     ),
                   ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      saved.contains(_photos[index]) ? Icons.check : null,
+                      color: saved.contains(_photos[index])
+                          ? Colors.green
+                          : null,
+                    ),
+                  )
+                ]));
+          },
+        ),
+        floatingActionButton:
+             Container(
+               foregroundDecoration: canSubmit ? null:  BoxDecoration(
+                 color: Colors.white,
+                 backgroundBlendMode: BlendMode.saturation,
+               ),
+               child: FloatingActionButton.extended(
+                  backgroundColor: Colors.pink ,
+                  onPressed:canSubmit ? (){
+                    saved.toString();
+                    debugPrint(saved.toString());
+                  } : () {},
+                  icon: const Icon(Icons.send),
+                  label: const Text('Submit'),
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    saved.contains(_photos[index]) ? Icons.check : null,
-                    color: saved.contains(_photos[index])
-                        ? Colors.green
-                        : null,
-                  ),
-                )
-              ]));
-        },
-      ),
-      floatingActionButton:
-           Container(
-             foregroundDecoration: canSubmit ? null:  BoxDecoration(
-               color: Colors.white,
-               backgroundBlendMode: BlendMode.saturation,
              ),
-             child: FloatingActionButton.extended(
-                backgroundColor: Colors.pink ,
-                onPressed:canSubmit ? (){
-                  saved.toString();
-                  debugPrint(saved.toString());
-                } : () {},
-                icon: const Icon(Icons.send),
-                label: const Text('Submit'),
-              ),
-           ),
+      ),
     );
   }
 }

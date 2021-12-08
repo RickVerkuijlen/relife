@@ -51,14 +51,39 @@ class _DetailPage extends State<DetailPage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            color: Colors.pink.withOpacity(0.5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              color: Colors.pink.withOpacity(0.5),
+            ),
             margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  photo.title,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      photo.title,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (alreadySaved) {
+                            saved.remove(photo);
+                          } else {
+                            saved.add(photo);
+                          }
+                        });
+                      },
+                      child: Icon(
+                        alreadySaved ? Icons.favorite : Icons.favorite_border,
+                        color: alreadySaved ? Colors.red : null,
+                      ),
+                    ),
+                  ],
                 ),
                 Text(
                   photo.description,
@@ -66,10 +91,12 @@ class _DetailPage extends State<DetailPage> {
                     fontSize: 14,
                   ),
                 ),
-                Icon(
-                  alreadySaved ? Icons.favorite : Icons.favorite_border,
-                  color: alreadySaved ? Colors.red : null,
-                )
+                Text(
+                  photo.location,
+                  style: const TextStyle(
+                    fontSize: 11,
+                  ),
+                ),
               ],
             ),
           ),
