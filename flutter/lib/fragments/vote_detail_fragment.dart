@@ -1,9 +1,9 @@
-import 'package:am_awareness/components/photo.dart';
+import 'package:am_awareness/components/submission.dart';
 import 'package:flutter/material.dart';
 import 'package:am_awareness/fragments/vote_fragment.dart';
 
 class DetailPage extends StatefulWidget {
-  final Photo widgetPhoto;
+  final Submission widgetPhoto;
 
   const DetailPage({
     Key? key,
@@ -17,7 +17,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPage extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    final Photo photo = widget.widgetPhoto;
+    final Submission photo = widget.widgetPhoto;
     final alreadySaved = saved.contains(photo.uuid);
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +45,7 @@ class _DetailPage extends State<DetailPage> {
               width: MediaQuery.of(context).size.width,
               child: Image(
                 fit: BoxFit.fitWidth,
-                image: AssetImage(photo.image),
+                image: NetworkImage(photo.image),
               ),
             ),
           ),

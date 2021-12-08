@@ -1,9 +1,10 @@
 package nl.rickverkuijlen.relife.resources;
 
+import nl.rickverkuijlen.relife.entity.MultipartBody;
 import nl.rickverkuijlen.relife.entity.Submission;
 import nl.rickverkuijlen.relife.logic.SubmissionLogic;
-import nl.rickverkuijlen.relife.service.FirebaseService;
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -21,10 +22,30 @@ public class SubmissionResource {
     Logger logger;
 
     @POST()
+    @Path("/upload/data")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void submitSubmission(Submission submission) throws IOException {
-        submissionLogic.submitSubmission(submission);
+    public Response submitSubmission(Submission submission) throws IOException {
+        System.out.println(submission);
+        return Response.ok()
+                .entity(submissionLogic.submitSubmission(submission))
+                .type(MediaType.APPLICATION_JSON_TYPE)
+                .build();
+    }
+
+    @POST()
+    @Path("/upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadImage(@MultipartForm MultipartBody image) {
+        try {
+            return Response
+                    .ok()
+                    .entity(submissionLogic.uploadImage(image))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
+        } catch (Exception e) {
+            return errorMessage(e);
+        }
     }
 
     @GET()
@@ -32,15 +53,17 @@ public class SubmissionResource {
     public Response getAllSubmissionsFromChallenge(@PathParam("challengeUuid") String challengeUuid) {
         logger.info("getAllSubmissionsFromChallenge: " + challengeUuid);
 
-        try {
-            return Response
-                    .ok()
-                    .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
-                    .type(MediaType.APPLICATION_JSON_TYPE)
-                    .build();
-        } catch (Exception e) {
-            return errorMessage(e);
-        }
+        return Response
+                .ok()
+                .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
+                .type(MediaType.APPLICATION_JSON_TYPE)
+                .build();
+
+//        try {
+//
+//        } catch (Exception e) {
+//            return errorMessage(e);
+//        }
     }
 
     private Response errorMessage(Exception e) {

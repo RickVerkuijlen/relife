@@ -1,8 +1,8 @@
 package nl.rickverkuijlen.relife.logic;
 
+import nl.rickverkuijlen.relife.entity.MultipartBody;
 import nl.rickverkuijlen.relife.entity.Submission;
 import nl.rickverkuijlen.relife.repository.SubmissionRepository;
-import nl.rickverkuijlen.relife.service.FirebaseService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -16,15 +16,15 @@ public class SubmissionLogic {
     @Inject
     SubmissionRepository submissionRepository;
 
-//    @Inject
-//    FirebaseService firebaseService;
-
-    public Submission submitSubmission(Submission submission) throws IOException {
-//        this.firebaseService = new FirebaseService();
-        return submission;
+    public Submission submitSubmission(Submission submission) {
+        return submissionRepository.submitSubmission(submission);
     }
 
     public List<Submission> getAllSubmissionsFromChallenge(String challengeUuid) {
         return submissionRepository.getAllSubmissionsFromChallenge(UUID.fromString(challengeUuid));
+    }
+
+    public String uploadImage(MultipartBody multipartBody) {
+        return this.submissionRepository.uploadImage(multipartBody);
     }
 }

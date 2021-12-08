@@ -1,31 +1,42 @@
 package nl.rickverkuijlen.relife.service;
 
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.cloud.
+import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.StorageClient;
 import io.quarkus.runtime.Startup;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
 import javax.inject.Singleton;
-import java.io.ByteArrayInputStream;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Base64;
 import java.util.Objects;
 
 @Singleton
-@Startup
 public class FirebaseService {
 
-    private static final String FIREBASE_CONFIG_ENVIRONMENT_NAME = "F:\\Bureaublad\\relife-c09bb-firebase-adminsdk-4ebos-6a20eac57d.json";
+    private final String FIREBASE_CONFIG_ENVIRONMENT_NAME = getClass().getResource("/firebase.json").toString();
 
     private final Logger logger = LoggerFactory.getLogger(FirebaseService.class);
 
-    public FirebaseService() {
+
+    @Getter
+    @Setter(AccessLevel.NONE)
+    public Bucket bucket;
+
+    public FirebaseService() throws IOException {
+
         Objects.requireNonNull(FIREBASE_CONFIG_ENVIRONMENT_NAME,
                 FIREBASE_CONFIG_ENVIRONMENT_NAME + " should not be null");
 
@@ -38,7 +49,7 @@ public class FirebaseService {
 
             FirebaseApp.initializeApp(options);
 
-            Bucket bucket = StorageClient.getInstance().bucket();
+            this.bucket = StorageClient.getInstance().bucket();
         } catch (IOException e) {
             logger.error(e.getMessage());
         }

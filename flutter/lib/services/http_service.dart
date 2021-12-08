@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:am_awareness/components/challenge.dart';
+import 'package:am_awareness/components/submission.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
@@ -12,6 +13,16 @@ class HttpService {
     List<Challenge> result = (responseJson as List).map((m) => Challenge.fromJson(m)).toList();
 
     result.sort((a, b) => a.submitDeadline.compareTo(b.submitDeadline));
+
+    return result;
+  }
+  
+  Future<List<Submission>> fetchSubmissionByChallenge(String challengeUuid) async {
+    var response = await http.get(Uri.http("10.0.2.2:80", "/submission/" + challengeUuid));
+    
+    var responseJson = jsonDecode(response.body);
+    
+    List<Submission> result = (responseJson as List).map((e) => Submission.fromJson(e)).toList();
 
     return result;
   }
