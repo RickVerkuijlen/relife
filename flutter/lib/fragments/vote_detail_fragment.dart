@@ -18,7 +18,7 @@ class _DetailPage extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final Photo photo = widget.widgetPhoto;
-    final alreadySaved = saved.contains(photo.uuid);
+    final alreadySaved = saved.contains(photo);
     return Scaffold(
       appBar: AppBar(
         title: Text(photo.title),
@@ -33,11 +33,11 @@ class _DetailPage extends State<DetailPage> {
             onDoubleTap: () {
               setState(() {
                 if (alreadySaved) {
-                  saved.remove(photo.uuid);
+                  saved.remove(photo);
                 } else {
-                  saved.add(photo.uuid);
+                  saved.add(photo);
                 }
-                debugPrint(saved.toString());
+                debugPrint(saved.length.toString());
               });
             },
             child: SizedBox(

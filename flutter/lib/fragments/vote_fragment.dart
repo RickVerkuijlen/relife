@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:am_awareness/components/photo.dart';
 import 'package:am_awareness/fragments/vote_detail_fragment.dart';
 
-final saved = <String>{};
+final saved = <Photo>{};
 
 class VoteFragment extends StatefulWidget {
-  const VoteFragment({Key? key, required this.uuid, required this.name}) : super(key: key);
+  const VoteFragment({Key? key, required this.uuid, required this.name})
+      : super(key: key);
 
   final String uuid;
   final String name;
@@ -69,33 +70,33 @@ class _VoteFragmentState extends State<VoteFragment> {
         'step, electrisch, klein',
         'Wychen'),
     Photo(
-        '',
+        'a',
         'images/e-step.jpg',
         'e-step',
         'Een step met een electrische motor',
         'step, electrisch, klein',
         'Wychen'),
     Photo(
-        '',
+        'b',
         'images/e-step.jpg',
         'e-step',
         'Een step met een electrische motor',
         'step, electrisch, klein',
         'Wychen'),
     Photo(
-        '',
+        'c',
         'images/e-step.jpg',
         'e-step',
         'Een step met een electrische motor',
         'step, electrisch, klein',
         'Wychen'),
-    Photo('', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
+    Photo('d', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
         'rood, verbrandingsmotor, auto', 'Arnhem'),
-    Photo('', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
+    Photo('e', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
         'rood, verbrandingsmotor, auto', 'Arnhem'),
-    Photo('', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
+    Photo('f', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
         'rood, verbrandingsmotor, auto', 'Arnhem'),
-    Photo('', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
+    Photo('g', 'images/auto.jpg', 'Auto', 'Een simpele auto, c1 rood',
         'rood, verbrandingsmotor, auto', 'Arnhem'),
   ];
 
@@ -106,6 +107,10 @@ class _VoteFragmentState extends State<VoteFragment> {
 
   @override
   Widget build(BuildContext context) {
+    final percentagePhoto = _photos.length / 10;
+    final canSubmit = saved.length == percentagePhoto.round();
+    final amountOfVotes = percentagePhoto.round();
+
     return Scaffold(
       appBar: AppBar(title: Text(widget.name)),
       body: GridView.builder(
@@ -127,7 +132,7 @@ class _VoteFragmentState extends State<VoteFragment> {
                         ),
                       ));
                 });
-
+                debugPrint(amountOfVotes.toString());
               },
               child: Stack(children: <Widget>[
                 Container(
@@ -141,8 +146,8 @@ class _VoteFragmentState extends State<VoteFragment> {
                 Align(
                   alignment: Alignment.center,
                   child: Icon(
-                    saved.contains(_photos[index].uuid) ? Icons.check : null,
-                    color: saved.contains(_photos[index].uuid)
+                    saved.contains(_photos[index]) ? Icons.check : null,
+                    color: saved.contains(_photos[index])
                         ? Colors.green
                         : null,
                   ),
@@ -150,6 +155,22 @@ class _VoteFragmentState extends State<VoteFragment> {
               ]));
         },
       ),
+      floatingActionButton:
+           Container(
+             foregroundDecoration: canSubmit ? null:  BoxDecoration(
+               color: Colors.white,
+               backgroundBlendMode: BlendMode.saturation,
+             ),
+             child: FloatingActionButton.extended(
+                backgroundColor: Colors.pink ,
+                onPressed:canSubmit ? (){
+                  saved.toString();
+                  debugPrint(saved.toString());
+                } : () {},
+                icon: const Icon(Icons.send),
+                label: const Text('Submit'),
+              ),
+           ),
     );
   }
 }
