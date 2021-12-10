@@ -19,6 +19,7 @@ class _DetailPage extends State<DetailPage> {
   Widget build(BuildContext context) {
     final Submission photo = widget.widgetPhoto;
     final alreadySaved = saved.contains(photo.uuid);
+    List<String> tags = photo.tags.split(", ");
     return Scaffold(
       appBar: AppBar(
         title: Text(photo.title),
@@ -33,11 +34,11 @@ class _DetailPage extends State<DetailPage> {
             onDoubleTap: () {
               setState(() {
                 if (alreadySaved) {
-                  saved.remove(photo.uuid);
+                  saved.remove(photo);
                 } else {
-                  saved.add(photo.uuid);
+                  saved.add(photo);
                 }
-                debugPrint(saved.toString());
+                debugPrint(saved.length.toString());
               });
             },
             child: SizedBox(
@@ -51,14 +52,70 @@ class _DetailPage extends State<DetailPage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            color: Colors.pink.withOpacity(0.5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              color: Colors.pink.withOpacity(0.5),
+            ),
             margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  photo.title,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                SizedBox(
+                  height: 15,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tags.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(
+                          right: 2.0,
+                        ),
+                        padding: EdgeInsets.only(
+                          left: 4.0,
+                          right: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green[800],
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                        ),
+                        child: Text(
+                          tags[index],
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      photo.title,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (alreadySaved) {
+                            saved.remove(photo);
+                          } else {
+                            saved.add(photo);
+                          }
+                        });
+                      },
+                      child: Icon(
+                        alreadySaved ? Icons.favorite : Icons.favorite_border,
+                        color: alreadySaved ? Colors.red : null,
+                      ),
+                    ),
+                  ],
                 ),
                 Text(
                   photo.description,
@@ -66,10 +123,12 @@ class _DetailPage extends State<DetailPage> {
                     fontSize: 14,
                   ),
                 ),
-                Icon(
-                  alreadySaved ? Icons.favorite : Icons.favorite_border,
-                  color: alreadySaved ? Colors.red : null,
-                )
+                Text(
+                  photo.location,
+                  style: const TextStyle(
+                    fontSize: 11,
+                  ),
+                ),
               ],
             ),
           ),
