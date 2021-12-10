@@ -19,6 +19,7 @@ class _DetailPage extends State<DetailPage> {
   Widget build(BuildContext context) {
     final Photo photo = widget.widgetPhoto;
     final alreadySaved = saved.contains(photo);
+    List<String> tags = photo.tags.split(", ");
     return Scaffold(
       appBar: AppBar(
         title: Text(photo.title),
@@ -60,6 +61,37 @@ class _DetailPage extends State<DetailPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 15,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tags.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(
+                          right: 2.0,
+                        ),
+                        padding: EdgeInsets.only(
+                          left: 4.0,
+                          right: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green[800],
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                        ),
+                        child: Text(
+                          tags[index],
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
