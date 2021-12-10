@@ -53,17 +53,15 @@ public class SubmissionResource {
     public Response getAllSubmissionsFromChallenge(@PathParam("challengeUuid") String challengeUuid) {
         logger.info("getAllSubmissionsFromChallenge: " + challengeUuid);
 
-        return Response
-                .ok()
-                .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
-                .type(MediaType.APPLICATION_JSON_TYPE)
-                .build();
-
-//        try {
-//
-//        } catch (Exception e) {
-//            return errorMessage(e);
-//        }
+        try {
+            return Response
+                    .ok()
+                    .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
+        } catch (Exception e) {
+            return errorMessage(e);
+        }
     }
 
     private Response errorMessage(Exception e) {
