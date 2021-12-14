@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +17,12 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "challenges")
-@Table(name = "challenges")
+@Entity
+@Table(name = "challenge")
 public class Challenge {
 
     @Id
+    @Type(type = "uuid-char")
     public UUID uuid;
 
     public String name;
