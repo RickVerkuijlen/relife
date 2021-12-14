@@ -1,50 +1,142 @@
+import 'dart:convert';
+
+import 'package:am_awareness/components/submission.dart';
 import 'package:flutter/material.dart';
 import 'package:am_awareness/fragments/vote_fragment.dart';
 
-class DetailPage extends StatelessWidget {
-  final String image;
-  final String title;
-  final String description;
-  final String tags;
-  final String location;
-  const DetailPage(
-      {Key? key,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.location,
-      required this.tags})
-      : super(key: key);
+class DetailPage extends StatefulWidget {
+  final Submission widgetPhoto;
+
+  const DetailPage({
+    Key? key,
+    required this.widgetPhoto,
+  }) : super(key: key);
 
   @override
+  _DetailPage createState() => _DetailPage();
+}
+
+class _DetailPage extends State<DetailPage> {
+  @override
   Widget build(BuildContext context) {
+    final Submission photo = widget.widgetPhoto;
+    final alreadySaved = saved.contains(photo.uuid);
+    List<String> tags = photo.tags.split(", ");
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(photo.title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: Column(
         children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              width: double.infinity,
+          GestureDetector(
+            onDoubleTap: () {
+              setState(() {
+                setSaveState(alreadySaved, photo);
+                int i = 0;
+                saved.forEach((element) {debugPrint("$i: " + element); i++;});
+              });
+            },
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width,
               child: Image(
-                image: AssetImage(image),
+                fit: BoxFit.fitWidth,
+                image: NetworkImage(photo.image),
               ),
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(20.0),
-            child: Center(
-              child: Text(
-                title,
-                style: TextStyle(fontSize: 28,
-                fontWeight: FontWeight.bold),
-              ),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              color: Colors.pink.withOpacity(0.5),
+            ),
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 15,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tags.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.only(
+                          right: 2.0,
+                        ),
+                        padding: const EdgeInsets.only(
+                          left: 4.0,
+                          right: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green[800],
+                          borderRadius: const BorderRadius.all(Radius.circular(40)),
+                        ),
+                        child: Text(
+                          tags[index],
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      photo.title,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => setSaveState(alreadySaved, photo));
+                      },
+                      child: Icon(
+                        alreadySaved ? Icons.favorite : Icons.favorite_border,
+                        color: alreadySaved ? Colors.red : null,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  photo.description,
+                  style: const TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  photo.location,
+                  style: const TextStyle(
+                    fontSize: 11,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
+  }
+  
+  void setSaveState(bool alreadySaved, Submission photo) {
+    if (alreadySaved) {
+      saved.remove(photo.uuid);
+    } else {
+      if(!saved.contains(photo.uuid)) {
+        saved.add(photo.uuid);
+      }
+    }
   }
 }

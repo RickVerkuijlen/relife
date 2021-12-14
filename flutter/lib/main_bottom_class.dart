@@ -62,7 +62,7 @@ class _MainBottomClassState extends State<MainBottomClass> {
         ],
         currentIndex: selectedIndex,
         onTap: onItemTapped,
-        unselectedItemColor: Colors.grey[300],
+        unselectedItemColor: Colors.grey[400],
         selectedItemColor: const Color(0xffe50056),
         showSelectedLabels: false,
         showUnselectedLabels: false,
