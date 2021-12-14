@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class HttpService {
   Future<List<Challenge>> fetchChallenges() async {
-    var response = await http.get(Uri.http("10.0.2.2:8080", "/challenge"));
+    var response = await http.get(Uri.http("10.0.2.2:80", "/challenge"));
 
     var responseJson = jsonDecode(response.body);
 
