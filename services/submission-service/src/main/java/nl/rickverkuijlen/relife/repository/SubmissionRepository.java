@@ -60,6 +60,6 @@ public class SubmissionRepository {
 
     public String uploadImage(MultipartBody multipartBody) {
         Blob blob = firebaseService.getBucket().create(multipartBody.fileName, multipartBody.data, "image/jpeg");
-        return blob.getName();
+        return blob.getSelfLink();
     }
 }

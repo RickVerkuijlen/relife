@@ -1,10 +1,12 @@
 package nl.rickverkuijlen.relife.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.cloud.storage.Blob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -24,6 +26,11 @@ public class Submission {
     @Id
     @Column(name = "submission_uuid")
     @Type(type = "uuid-char")
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     public UUID submissionUuid;
 
     @Column(name = "challenge_uuid")
@@ -34,6 +41,7 @@ public class Submission {
 
     public String description;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
     public Date date;
 
     public String location;

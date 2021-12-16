@@ -36,16 +36,20 @@ public class SubmissionResource {
     @POST()
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadImage(@MultipartForm MultipartBody image) {
-        try {
-            return Response
-                    .ok()
-                    .entity(submissionLogic.uploadImage(image))
-                    .type(MediaType.APPLICATION_JSON_TYPE)
-                    .build();
-        } catch (Exception e) {
-            return errorMessage(e);
-        }
+    public Response uploadImage(@MultipartForm MultipartBody file) {
+
+        System.out.println(file.fileName);
+
+        return Response
+                .ok()
+                .entity(submissionLogic.uploadImage(file))
+                .type(MediaType.APPLICATION_JSON_TYPE)
+                .build();
+//        try {
+//
+//        } catch (Exception e) {
+//            return errorMessage(e);
+//        }
     }
 
     @GET()
@@ -53,15 +57,17 @@ public class SubmissionResource {
     public Response getAllSubmissionsFromChallenge(@PathParam("challengeUuid") String challengeUuid) {
         logger.info("getAllSubmissionsFromChallenge: " + challengeUuid);
 
-        try {
-            return Response
-                    .ok()
-                    .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
-                    .type(MediaType.APPLICATION_JSON_TYPE)
-                    .build();
-        } catch (Exception e) {
-            return errorMessage(e);
-        }
+        return Response
+                .ok()
+                .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
+                .type(MediaType.APPLICATION_JSON_TYPE)
+                .build();
+
+//        try {
+//
+//        } catch (Exception e) {
+//            return errorMessage(e);
+//        }
     }
 
     private Response errorMessage(Exception e) {
