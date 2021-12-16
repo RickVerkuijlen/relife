@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "538048860251",
+    "project_id": "relife-c09bb",
+    "storage_bucket": "relife-c09bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538048860251:android:587730a78ba65f8fb66f7e",
+        "android_client_info": {
+          "package_name": "nl.rickverkuijlen.relife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538048860251-53es5khgdnrkjde59t9ico7a8re9kpts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARnIwKf1z3vz0WTC821KTflB66Ml9gZPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538048860251-53es5khgdnrkjde59t9ico7a8re9kpts.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:am_awareness/components/challenge.dart';
 import 'package:am_awareness/components/submission.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
