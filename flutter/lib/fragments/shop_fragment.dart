@@ -19,25 +19,25 @@ class _AddFragment extends State<ShopFragment> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: EdgeInsets.all(8.0),
           height: MediaQuery.of(context).size.height / 2,
           width: MediaQuery.of(context).size.width,
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 0,
               crossAxisCount: 2,
             ),
             itemCount: voucher.length,
             itemBuilder: (context, index) {
               return Container(
+                margin: EdgeInsets.all(4.0),
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 10.0,
+                        blurRadius: 4.0,
                         spreadRadius: 2.0,
                         offset: Offset(0.0, 0.0),
                       ),
@@ -68,6 +68,17 @@ class _AddFragment extends State<ShopFragment> {
                             image: AssetImage(voucher[index].logo),
                             fit: BoxFit.contain,
                           ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Text(voucher[index].title,
+                            style: ,)
+                          ],
                         ),
                       ),
                     )
