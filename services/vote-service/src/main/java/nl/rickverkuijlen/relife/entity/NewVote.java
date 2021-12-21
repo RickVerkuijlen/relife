@@ -15,6 +15,6 @@ public class NewVote {
 
     @Type(type = "char-uuid")
     public UUID challengeUuid;
-    public int userId;
+    public String userId;
     public List<String> votedSubmissionUuidList;
 }

@@ -1,3 +1,5 @@
+import 'package:am_awareness/services/currency_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'fragments/account_fragment.dart';
@@ -16,6 +18,9 @@ class MainBottomClass extends StatefulWidget {
 class _MainBottomClassState extends State<MainBottomClass> {
   int selectedIndex = 0;
 
+  final currencyService = CurrencyService();
+  late int currency = currencyService.currency;
+
   final widgetOptions = [
     const HomeFragment(),
     const ShopFragment(),
@@ -33,8 +38,10 @@ class _MainBottomClassState extends State<MainBottomClass> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
+        leading: Text("$currency"),
         title: Text(widgetTitle.elementAt(selectedIndex))
       ),
       body: Center(

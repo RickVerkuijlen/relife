@@ -1,9 +1,9 @@
+import 'package:am_awareness/fragments/vote_detail_fragment.dart';
+import 'package:am_awareness/services/currency_service.dart';
 import 'package:am_awareness/services/http_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:am_awareness/components/submission.dart';
-import 'package:am_awareness/fragments/vote_detail_fragment.dart';
-import 'package:uuid/uuid.dart';
 
 final saved = <String>{};
 
@@ -20,6 +20,7 @@ class VoteFragment extends StatefulWidget {
 
 class _VoteFragmentState extends State<VoteFragment> {
   late HttpService httpService = HttpService();
+  late CurrencyService currencyService = CurrencyService();
   late bool canSubmit = false;
 
   @override
@@ -45,8 +46,8 @@ class _VoteFragmentState extends State<VoteFragment> {
                             ? 1
                             : percentagePhoto.round());
                     final amountOfVotes = percentagePhoto.round();
-                    debugPrint("$percentagePhoto");
                     debugPrint("$amountOfVotes");
+                    debugPrint("${saved.length}");
                     return GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -107,7 +108,7 @@ class _VoteFragmentState extends State<VoteFragment> {
                   backgroundColor: Colors.pink,
                   onPressed: canSubmit
                       ? () {
-                          submitVotes(widget.uuid, 2, saved);
+                          submitVotes(widget.uuid, saved);
                         }
                       : () {},
                   icon: const Icon(Icons.send),
@@ -115,11 +116,15 @@ class _VoteFragmentState extends State<VoteFragment> {
                 ))));
   }
 
-  void submitVotes(String challengeUuid, int userId, Set<String> savedSubmissionUuids) {
+  void submitVotes(String challengeUuid, Set<String> savedSubmissionUuids) {
     debugPrint("ChallengeUuid: $challengeUuid");
-    debugPrint("UserId: $userId");
+    debugPrint("UserId: ${FirebaseAuth.instance.currentUser!.uid}");
     debugPrint("savedSubmissionUuids: $savedSubmissionUuids");
 
-    httpService.submitVotes(challengeUuid, userId, savedSubmissionUuids.toList());
+    httpService.submitVotes(challengeUuid, FirebaseAuth.instance.currentUser!.uid, savedSubmissionUuids.toList());
+
+    currencyService.addCurrency(100);
+
+
   }
 }

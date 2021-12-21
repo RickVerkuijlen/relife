@@ -26,7 +26,7 @@ class HttpService {
   
   Future<List<Submission>> fetchSubmissionByChallenge(String challengeUuid) async {
 
-    var response = await http.get(Uri.http("10.0.2.2:8080", "/submission/" + challengeUuid));
+    var response = await http.get(Uri.http("10.0.2.2:80", "/submission/" + challengeUuid));
     
     var responseJson = jsonDecode(response.body);
     
@@ -35,7 +35,7 @@ class HttpService {
     return result;
   }
 
-  Future<void> submitVotes(String challengeUuid, int userId, List<String> votedSubmissions) async {
+  Future<void> submitVotes(String challengeUuid, String userId, List<String> votedSubmissions) async {
     Map data = {
       "challengeUuid": challengeUuid,
       "userId": userId,
@@ -43,7 +43,7 @@ class HttpService {
     };
 
     var response = await http.post(
-        Uri.http("10.0.2.2:80", "/vote"),
+        Uri.http("10.0.2.2:8080", "/vote"),
         headers: HEADER,
         body: jsonEncode(data)
     );
@@ -59,7 +59,7 @@ class HttpService {
     submission.image = imagePath;
 
     var response = await http.post(
-      Uri.http("10.0.2.2:8080", "/submission/upload/data"),
+      Uri.http("10.0.2.2:80", "/submission/upload/data"),
       headers: HEADER,
       body: jsonEncode(submission)
     );
@@ -68,7 +68,7 @@ class HttpService {
   }
 
   Future<String> _uploadImageToFirebase(String fileName, File image) async {
-    var request = http.MultipartRequest("POST", Uri.http("10.0.2.2:8080", "/submission/upload"));
+    var request = http.MultipartRequest("POST", Uri.http("10.0.2.2:80", "/submission/upload"));
     request.headers.addAll({
       'Content-Type': 'multipart/form-data'
     });
