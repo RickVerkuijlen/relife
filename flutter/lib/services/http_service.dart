@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:am_awareness/components/challenge.dart';
 import 'package:am_awareness/components/submission.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
@@ -24,6 +25,7 @@ class HttpService {
   }
   
   Future<List<Submission>> fetchSubmissionByChallenge(String challengeUuid) async {
+
     var response = await http.get(Uri.http("10.0.2.2:8080", "/submission/" + challengeUuid));
     
     var responseJson = jsonDecode(response.body);
@@ -51,7 +53,7 @@ class HttpService {
 
   }
 
-  Future<void> postSubmission(Submission submission, File image) async {
+  Future<bool> postSubmission(Submission submission, File image) async {
     String imagePath = await _uploadImageToFirebase("${submission.challengeUuid}/${submission.title}.jpg", image);
 
     submission.image = imagePath;
@@ -61,9 +63,8 @@ class HttpService {
       headers: HEADER,
       body: jsonEncode(submission)
     );
-    print(jsonEncode(submission));
     var body = response.body;
-    print(body);
+    return (response.statusCode == 202);
   }
 
   Future<String> _uploadImageToFirebase(String fileName, File image) async {

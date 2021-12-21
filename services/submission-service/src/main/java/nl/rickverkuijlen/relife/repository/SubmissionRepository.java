@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
 public class SubmissionRepository {
@@ -60,6 +61,6 @@ public class SubmissionRepository {
 
     public String uploadImage(MultipartBody multipartBody) {
         Blob blob = firebaseService.getBucket().create(multipartBody.fileName, multipartBody.data, "image/jpeg");
-        return blob.getSelfLink();
+        return blob.signUrl(30, TimeUnit.DAYS).toString();
     }
 }

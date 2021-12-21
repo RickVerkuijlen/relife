@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
   Future<void> performLogin(String provider, List<String> scopes, Map<String, String> parameters) async {
     try {
       await FirebaseAuthOAuth().openSignInFlow(provider, scopes, parameters);
+      final user = FirebaseAuth.instance.currentUser;
+      final idToken = await user?.getIdToken();
+      print("asdf: $idToken");
     } on PlatformException catch (error) {
       debugPrint("${error.code}: ${error.message}");
     }
@@ -36,7 +39,9 @@ class MyApp extends StatelessWidget {
         initialData: null,
         stream: FirebaseAuth.instance.userChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-          performLogin("microsoft.com", ["email openid"], {'tenant': 'f8cdef31-a31e-4b4a-93e4-5f571e91255a'});
+          if(FirebaseAuth.instance.currentUser == null) {
+            performLogin("microsoft.com", ["email openid"], {'tenant': '9095cb99-438e-4daa-8f2c-d0a04c8fac4e'});
+          }
           return const MyHomePage(title: 'Advanced Mobility awareness');
         },
       )

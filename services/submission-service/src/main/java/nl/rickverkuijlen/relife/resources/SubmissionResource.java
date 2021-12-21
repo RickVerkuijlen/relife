@@ -27,7 +27,7 @@ public class SubmissionResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response submitSubmission(Submission submission) throws IOException {
         System.out.println(submission);
-        return Response.ok()
+        return Response.accepted()
                 .entity(submissionLogic.submitSubmission(submission))
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
@@ -38,18 +38,18 @@ public class SubmissionResource {
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadImage(@MultipartForm MultipartBody file) {
 
-        System.out.println(file.fileName);
+        logger.info(file.fileName);
 
-        return Response
-                .ok()
-                .entity(submissionLogic.uploadImage(file))
-                .type(MediaType.APPLICATION_JSON_TYPE)
-                .build();
-//        try {
-//
-//        } catch (Exception e) {
-//            return errorMessage(e);
-//        }
+
+        try {
+            return Response
+                    .accepted()
+                    .entity(submissionLogic.uploadImage(file))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
+        } catch (Exception e) {
+            return errorMessage(e);
+        }
     }
 
     @GET()
@@ -57,17 +57,15 @@ public class SubmissionResource {
     public Response getAllSubmissionsFromChallenge(@PathParam("challengeUuid") String challengeUuid) {
         logger.info("getAllSubmissionsFromChallenge: " + challengeUuid);
 
-        return Response
-                .ok()
-                .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
-                .type(MediaType.APPLICATION_JSON_TYPE)
-                .build();
-
-//        try {
-//
-//        } catch (Exception e) {
-//            return errorMessage(e);
-//        }
+        try {
+            return Response
+                    .ok()
+                    .entity(submissionLogic.getAllSubmissionsFromChallenge(challengeUuid))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
+        } catch (Exception e) {
+            return errorMessage(e);
+        }
     }
 
     private Response errorMessage(Exception e) {

@@ -37,6 +37,8 @@ public class Submission {
     @Type(type = "uuid-char")
     public UUID challengeUuid;
 
+    public String userId;
+
     public String name;
 
     public String description;

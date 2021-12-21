@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:am_awareness/components/challenge.dart';
 import 'package:am_awareness/components/submission.dart';
+import 'package:am_awareness/fragments/vote_fragment.dart';
 import 'package:am_awareness/services/http_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,6 +24,8 @@ class _AddFragment extends State<AddFragment> {
   late String submissionDescription;
   late String submissionLocation;
   late String submissionTags;
+
+  bool submissionSucceed = true;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -301,7 +305,7 @@ class _AddFragment extends State<AddFragment> {
                           ))
                       : Container(
                           child: Text("Select a challenge first!"),
-                        )
+                        ),
                 ])));
   }
 
@@ -327,12 +331,19 @@ class _AddFragment extends State<AddFragment> {
     }
   }
 
-  void onPressed() {
-    if (_formKey.currentState!.validate()) {
+  void onPressed() async {
+    if (_formKey.currentState!.validate() && image != null) {
       _formKey.currentState!.save();
-      late Submission submission = Submission(challengeUuid: dropdownValue!.uuid, userId: "rick", image: '', title: submissionTitle, description: submissionDescription, location: submissionLocation, amountOfLikes: 0, date: DateTime.now().toString(), tags: submissionTags);
+      late Submission submission = Submission(challengeUuid: dropdownValue!.uuid, userId: FirebaseAuth.instance.currentUser?.uid, image: '', title: submissionTitle, description: submissionDescription, location: submissionLocation, amountOfLikes: 0, date: DateTime.now().toString(), tags: submissionTags);
 
-      httpService.postSubmission(submission, image!);
+      bool succeed = await httpService.postSubmission(submission, image!);
+
+      if(succeed) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => VoteFragment(uuid: dropdownValue!.uuid, name: dropdownValue!.name)));
+      }
     }
   }
 }
