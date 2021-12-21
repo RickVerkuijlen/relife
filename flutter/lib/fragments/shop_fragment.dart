@@ -3,7 +3,7 @@ import 'package:am_awareness/components/voucher.dart';
 
 List<Voucher> voucher = [
   Voucher('images/bier.jpg', 'Gratis Biertje', '500', 'images/lokaal_99.jpg'),
-  Voucher('images/bier.jpg', 'Gratis Biertje', '500', 'images/lokaal_99.jpg'),
+  Voucher('images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
 ];
 
 class ShopFragment extends StatefulWidget {
@@ -61,7 +61,7 @@ class _AddFragment extends State<ShopFragment> {
                     Align(
                       alignment: Alignment.center,
                       child: Container(
-                        height: MediaQuery.of(context).size.height / 11,
+                        height: MediaQuery.of(context).size.height / 12,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -74,10 +74,24 @@ class _AddFragment extends State<ShopFragment> {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
+                        height: MediaQuery.of(context).size.height/10,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(voucher[index].title,
-                            style: ,)
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),),
+                            Container(
+                              height: MediaQuery.of(context).size.height/25,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('images/Relife_valuta.png', color: Colors.black,),
+                                  Text(voucher[index].cost)
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ),
