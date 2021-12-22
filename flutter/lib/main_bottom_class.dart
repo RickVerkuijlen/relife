@@ -31,6 +31,7 @@ class _MainBottomClassState extends State<MainBottomClass> {
   void onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
+      currency = currencyService.currency;
     });
   }
 
@@ -38,7 +39,6 @@ class _MainBottomClassState extends State<MainBottomClass> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         leading: Text("$currency"),

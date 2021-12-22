@@ -22,6 +22,7 @@ class _VoteFragmentState extends State<VoteFragment> {
   late HttpService httpService = HttpService();
   late CurrencyService currencyService = CurrencyService();
   late bool canSubmit = false;
+  late int amountOfVotes = 0;
 
   @override
   void initState() {
@@ -40,12 +41,12 @@ class _VoteFragmentState extends State<VoteFragment> {
                 future: httpService.fetchSubmissionByChallenge(widget.uuid),
                 builder: (context, AsyncSnapshot<List> snapshot) {
                   if (snapshot.hasData) {
-                    final percentagePhoto = snapshot.data!.length / 10;
+                    final percentagePhoto = snapshot.data!.length / 2;
                     canSubmit = saved.length ==
                         (percentagePhoto.round() < 1
                             ? 1
                             : percentagePhoto.round());
-                    final amountOfVotes = percentagePhoto.round();
+                    amountOfVotes = percentagePhoto.round();
                     debugPrint("$amountOfVotes");
                     debugPrint("${saved.length}");
                     return GridView.builder(
@@ -112,7 +113,9 @@ class _VoteFragmentState extends State<VoteFragment> {
                         }
                       : () {},
                   icon: const Icon(Icons.send),
-                  label: const Text('Submit'),
+                  label: Text(canSubmit
+                      ? "Submit"
+                      : '${amountOfVotes - saved.length} votes left'),
                 ))));
   }
 
@@ -121,10 +124,12 @@ class _VoteFragmentState extends State<VoteFragment> {
     debugPrint("UserId: ${FirebaseAuth.instance.currentUser!.uid}");
     debugPrint("savedSubmissionUuids: $savedSubmissionUuids");
 
-    httpService.submitVotes(challengeUuid, FirebaseAuth.instance.currentUser!.uid, savedSubmissionUuids.toList());
+//    httpService.submitVotes(challengeUuid,
+//        FirebaseAuth.instance.currentUser!.uid, savedSubmissionUuids.toList());
 
     currencyService.addCurrency(100);
+    setState(() {
 
-
+    });
   }
 }

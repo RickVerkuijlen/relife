@@ -343,6 +343,10 @@ class _AddFragment extends State<AddFragment> {
             context,
             MaterialPageRoute(
                 builder: (context) => VoteFragment(uuid: dropdownValue!.uuid, name: dropdownValue!.name)));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Something went wrong, try it again later"))
+        );
       }
     }
   }

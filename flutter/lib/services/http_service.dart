@@ -43,7 +43,7 @@ class HttpService {
     };
 
     var response = await http.post(
-        Uri.http("10.0.2.2:8080", "/vote"),
+        Uri.http("10.0.2.2:80", "/vote"),
         headers: HEADER,
         body: jsonEncode(data)
     );
