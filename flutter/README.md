@@ -1,6 +1,6 @@
-# am_awareness
+# ReLife - Flutter app
 
-A new Flutter project.
+The frontend framework used for ReLife.
 
 ## Getting Started
 
