@@ -1,84 +1,59 @@
-import 'package:am_awareness/fragments/bought_fragment.dart';
 import 'package:flutter/material.dart';
 import 'package:am_awareness/components/voucher.dart';
+import 'package:am_awareness/fragments/shop_fragment.dart';
 
 
-List<Voucher> voucher = [
-  Voucher('images/bier.jpg', 'Gratis Biertje', '500', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-  Voucher(
-      'images/bier.jpg', 'Gratis Meter Bier', '1200', 'images/lokaal_99.jpg'),
-];
-
-class ShopFragment extends StatefulWidget {
-  const ShopFragment({Key? key}) : super(key: key);
+class BoughtFragment extends StatefulWidget {
+  final List<Voucher> bought;
+  const BoughtFragment({Key? key, required this.bought}) : super(key: key);
   @override
   _AddFragment createState() => _AddFragment();
 }
 
-class _AddFragment extends State<ShopFragment> {
-  final bought = <Voucher>[];
+class _AddFragment extends State<BoughtFragment> {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          height: MediaQuery.of(context).size.height / 20,
+          height: MediaQuery.of(context).size.height/20,
           margin: EdgeInsets.only(top: 8.0, bottom: 2.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width / 2.5,
-                padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
+                width: MediaQuery.of(context).size.width/2.5,
+                padding: EdgeInsets.only(top: 4.0,bottom: 4.0),
                 decoration: BoxDecoration(
-                    color: Colors.pink.withOpacity(0.8),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(14),
-                        bottomLeft: Radius.circular(14))),
+                    color: Colors.pink.withOpacity(0.4),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(14),
+                        bottomLeft: Radius.circular(14))
+                ),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
                     'Offers',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.grey
+                    ),
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BoughtFragment(
-                          bought: bought,
-                        ),
-                      ));
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
-                  decoration: BoxDecoration(
-                      color: Colors.pink.withOpacity(0.4),
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(14),
-                          bottomRight: Radius.circular(14))),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'My vouchers',
-                      style: TextStyle(color: Colors.grey),
+              Container(
+                width: MediaQuery.of(context).size.width/2.5,
+                padding: EdgeInsets.only(top: 4.0,bottom: 4.0),
+                decoration: BoxDecoration(
+                    color: Colors.pink.withOpacity(0.8),
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(14),
+                        bottomRight: Radius.circular(14))
+                ),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'My vouchers',
+                    style: TextStyle(
+                        color: Colors.white
                     ),
                   ),
                 ),
@@ -95,7 +70,7 @@ class _AddFragment extends State<ShopFragment> {
               mainAxisSpacing: 0,
               crossAxisCount: 2,
             ),
-            itemCount: voucher.length,
+            itemCount: .length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.all(4.0),
