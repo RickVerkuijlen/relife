@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1857c2a8-cab4-4142-9a7b-06ff2c8ea0d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../flutter/lib/fragments/shop_fragment.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/repository/ChallengeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/components/challenge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/components/challenge.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flutter/lib/fragments/home_fragment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/fragments/home_fragment.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/main_bottom_class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/main_bottom_class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/services/http_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/services/http_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/entity/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/entity/Challenge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/logic/ChallengeLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/logic/ChallengeLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/resources/GreetingResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/java/nl/rickverkuijlen/relife/resources/ChallengeResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/GreetingResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/ChallengeResourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/NativeGreetingResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/src/test/java/nl/rickverkuijlen/relife/NativeChallengeResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/target/classes/nl/rickverkuijlen/relife/logic/ChallengeLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/classes/nl/rickverkuijlen/relife/logic/ChallengeLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge-service/target/quarkus/bootstrap/dev-app-model.dat" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-service/target/quarkus/bootstrap/dev-app-model.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/fragments/vote_fragment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/fragments/vote_fragment.dart" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,27 +22,24 @@
   </component>
   <component name="ProjectId" id="21gBh9hUmbdS0tRDXBONR2vAWTB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/challenge-service" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -72,21 +51,25 @@
       <option name="presentableId" value="Default" />
       <updated>1638352966479</updated>
       <workItem from="1638352967778" duration="8909000" />
+      <workItem from="1638781488109" duration="17000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
