@@ -11,6 +11,8 @@ class MainBottomClass extends StatefulWidget {
   @override
   _MainBottomClassState createState() => _MainBottomClassState();
 
+
+
 }
 
 class _MainBottomClassState extends State<MainBottomClass> {
@@ -31,11 +33,28 @@ class _MainBottomClassState extends State<MainBottomClass> {
 
   final widgetTitle = ["Home", "Shop", "Add", "Account"];
 
+  List<String> options = <String>['One', 'images/han-logo.png', 'images/han-lev.jpg', 'Four'];
+  String dropdownValue = 'images/han-logo.png';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widgetTitle.elementAt(selectedIndex))
+        title: Text(widgetTitle.elementAt(selectedIndex)),
+        actions: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: GestureDetector(
+          onTap: () {},
+          child: const Image(image:AssetImage('images/han-logo.png'),
+                  color: Colors.white, height: 80, width: 60,
+                  ),
+        )
+      ),
+
+
+
+        ],
       ),
       body: Center(
         child: widgetOptions.elementAt(selectedIndex),

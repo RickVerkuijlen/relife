@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f55cef04-7450-48ae-a8f3-20e6d15e402f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter/lib/fragments/account_fragment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/lib/fragments/account_fragment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter/lib/main_bottom_class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/lib/main_bottom_class.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,19 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/flutter/lib/fragments/vote_fragment.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/flutter/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/flutter/lib/fragments/home_fragment.dart" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20Ueai35tmbVPRdFto1PO6fsFti" />
   <component name="ProjectReloadState">
@@ -35,7 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flutter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flutter/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -43,6 +61,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nieck\Documents\GitHub\relife\flutter\images" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -73,6 +96,9 @@
       <workItem from="1638438820860" duration="69000" />
       <workItem from="1638864414151" duration="729000" />
       <workItem from="1638865541670" duration="86000" />
+      <workItem from="1639570559881" duration="37279000" />
+      <workItem from="1639741419015" duration="17359000" />
+      <workItem from="1642507145516" duration="1337000" />
     </task>
     <servers />
   </component>
@@ -90,5 +116,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
