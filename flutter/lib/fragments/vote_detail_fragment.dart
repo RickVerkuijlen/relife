@@ -45,7 +45,7 @@ class _DetailPage extends State<DetailPage> {
               width: MediaQuery.of(context).size.width,
               child: Image(
                 fit: BoxFit.fitWidth,
-                image: NetworkImage(photo.image),
+                image: NetworkImage(photo.image!),
               ),
             ),
           ),
@@ -135,7 +135,7 @@ class _DetailPage extends State<DetailPage> {
       saved.remove(photo.uuid);
     } else {
       if(!saved.contains(photo.uuid)) {
-        saved.add(photo.uuid);
+        saved.add(photo.uuid!);
       }
     }
   }

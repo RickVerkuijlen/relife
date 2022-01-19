@@ -12,13 +12,12 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 public class VoteRepository {
 
-
     @Inject
     EntityManager entityManager;
 
     @Transactional
     public void submitVote(Vote vote) throws EntityExistsException {
         entityManager.persist(vote);
-        entityManager.getTransaction().commit();
+//        entityManager.getTransaction().commit();
     }
 }

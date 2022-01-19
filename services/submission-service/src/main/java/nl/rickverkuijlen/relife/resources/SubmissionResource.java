@@ -27,7 +27,7 @@ public class SubmissionResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response submitSubmission(Submission submission) throws IOException {
         System.out.println(submission);
-        return Response.ok()
+        return Response.accepted()
                 .entity(submissionLogic.submitSubmission(submission))
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
@@ -36,11 +36,15 @@ public class SubmissionResource {
     @POST()
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadImage(@MultipartForm MultipartBody image) {
+    public Response uploadImage(@MultipartForm MultipartBody file) {
+
+        logger.info(file.fileName);
+
+
         try {
             return Response
-                    .ok()
-                    .entity(submissionLogic.uploadImage(image))
+                    .accepted()
+                    .entity(submissionLogic.uploadImage(file))
                     .type(MediaType.APPLICATION_JSON_TYPE)
                     .build();
         } catch (Exception e) {
