@@ -5,7 +5,7 @@ class CurrencyService extends ChangeNotifier {
   late int currency;
 
   CurrencyService() {
-    currency = ;
+    currency = 100;
   }
 
   void addCurrency(int amount) {

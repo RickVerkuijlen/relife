@@ -26,16 +26,14 @@ public class ShopResource {
     public Response addCurrency(Currency currency) {
         logger.info("Adding " + currency.amount + " coins to userId " + currency.userId);
 
-        return Response.ok()
-                .entity(shopLogic.addCurrency(currency))
-                .type(MediaType.APPLICATION_JSON_TYPE)
-                .build();
-
-//        try {
-//
-//        } catch (Exception e) {
-//            return errorMessage(e);
-//        }
+        try {
+            return Response.ok()
+                    .entity(shopLogic.addCurrency(currency))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
+        } catch (Exception e) {
+            return errorMessage(e);
+        }
     }
 
     @GET

@@ -13,7 +13,7 @@ public class ShopLogic {
     @Inject
     ShopRepository shopRepository;
 
-    public Currency addCurrency(Currency currency) {
+    public Currency addCurrency(Currency currency) throws Exception {
         return shopRepository.addCurrency(currency);
     }
 
