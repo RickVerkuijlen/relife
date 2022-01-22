@@ -23,7 +23,7 @@ public class Vote implements Serializable {
 
     @Id
     @Column(name = "user_id")
-    public int userId;
+    public String userId;
 
     @Id
     @Column(name = "submission_uuid")

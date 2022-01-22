@@ -37,3 +37,5 @@ nb-configuration.xml
 
 # Local environment
 .env
+services/submission-service/src/main/resources/firebase.json
+services/submission-service/src/main/resources/relife-c09bb-45d3ee8dd7ab.json

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Path("/vote")
@@ -23,18 +24,20 @@ public class VoteResource {
     @POST()
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response submitVote(NewVote vote) {
+    public Response submitVote(NewVote vote) throws Exception {
         logger.info("submitVote: " + vote);
+        return Response
+                .status(Response.Status.CREATED)
+                .entity(voteLogic.submitVote(vote))
+                .type(MediaType.APPLICATION_JSON)
+                .build();
 
-        try {
-            return Response
-                    .status(Response.Status.CREATED)
-                    .entity(voteLogic.submitVote(vote))
-                    .type(MediaType.APPLICATION_JSON)
-                    .build();
-        } catch(Exception e) {
-            return errorMessage(e);
-        }
+
+//        try {
+//
+//        } catch(Exception e) {
+//            return errorMessage(e);
+//        }
     }
 
     private Response errorMessage(Exception e) {

@@ -1,3 +1,5 @@
+import 'package:am_awareness/services/currency_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'fragments/account_fragment.dart';
@@ -11,10 +13,15 @@ class MainBottomClass extends StatefulWidget {
   @override
   _MainBottomClassState createState() => _MainBottomClassState();
 
+
+
 }
 
 class _MainBottomClassState extends State<MainBottomClass> {
   int selectedIndex = 0;
+
+  final currencyService = CurrencyService();
+  late int currency = currencyService.currency;
 
   final widgetOptions = [
     const HomeFragment(),
@@ -26,16 +33,35 @@ class _MainBottomClassState extends State<MainBottomClass> {
   void onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
+      currency = currencyService.currency;
     });
   }
 
   final widgetTitle = ["Home", "Shop", "Add", "Account"];
 
+  List<String> options = <String>['One', 'images/han-logo.png', 'images/han-lev.jpg', 'Four'];
+  String dropdownValue = 'images/han-logo.png';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widgetTitle.elementAt(selectedIndex))
+        leading: Text("$currency"),
+        title: Text(widgetTitle.elementAt(selectedIndex)),
+        actions: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: GestureDetector(
+          onTap: () {},
+          child: const Image(image:AssetImage('images/han-logo.png'),
+                  color: Colors.white, height: 80, width: 60,
+                  ),
+        )
+      ),
+
+
+
+        ],
       ),
       body: Center(
         child: widgetOptions.elementAt(selectedIndex),

@@ -1,9 +1,11 @@
-import 'package:am_awareness/components/photo.dart';
+import 'dart:convert';
+
+import 'package:am_awareness/components/submission.dart';
 import 'package:flutter/material.dart';
 import 'package:am_awareness/fragments/vote_fragment.dart';
 
 class DetailPage extends StatefulWidget {
-  final Photo widgetPhoto;
+  final Submission widgetPhoto;
 
   const DetailPage({
     Key? key,
@@ -17,14 +19,14 @@ class DetailPage extends StatefulWidget {
 class _DetailPage extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    final Photo photo = widget.widgetPhoto;
-    final alreadySaved = saved.contains(photo);
+    final Submission photo = widget.widgetPhoto;
+    final alreadySaved = saved.contains(photo.uuid);
     List<String> tags = photo.tags.split(", ");
     return Scaffold(
       appBar: AppBar(
         title: Text(photo.title),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -33,12 +35,9 @@ class _DetailPage extends State<DetailPage> {
           GestureDetector(
             onDoubleTap: () {
               setState(() {
-                if (alreadySaved) {
-                  saved.remove(photo);
-                } else {
-                  saved.add(photo);
-                }
-                debugPrint(saved.length.toString());
+                setSaveState(alreadySaved, photo);
+                int i = 0;
+                saved.forEach((element) {debugPrint("$i: " + element); i++;});
               });
             },
             child: SizedBox(
@@ -46,14 +45,14 @@ class _DetailPage extends State<DetailPage> {
               width: MediaQuery.of(context).size.width,
               child: Image(
                 fit: BoxFit.fitWidth,
-                image: AssetImage(photo.image),
+                image: NetworkImage(photo.image!),
               ),
             ),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
               color: Colors.pink.withOpacity(0.5),
             ),
             margin: const EdgeInsets.all(8.0),
@@ -70,20 +69,20 @@ class _DetailPage extends State<DetailPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(
+                        margin: const EdgeInsets.only(
                           right: 2.0,
                         ),
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           left: 4.0,
                           right: 4.0,
                         ),
                         decoration: BoxDecoration(
                           color: Colors.green[800],
-                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                          borderRadius: const BorderRadius.all(Radius.circular(40)),
                         ),
                         child: Text(
                           tags[index],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             color: Colors.white,
                           ),
@@ -102,13 +101,7 @@ class _DetailPage extends State<DetailPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          if (alreadySaved) {
-                            saved.remove(photo);
-                          } else {
-                            saved.add(photo);
-                          }
-                        });
+                        setState(() => setSaveState(alreadySaved, photo));
                       },
                       child: Icon(
                         alreadySaved ? Icons.favorite : Icons.favorite_border,
@@ -135,5 +128,15 @@ class _DetailPage extends State<DetailPage> {
         ],
       ),
     );
+  }
+  
+  void setSaveState(bool alreadySaved, Submission photo) {
+    if (alreadySaved) {
+      saved.remove(photo.uuid);
+    } else {
+      if(!saved.contains(photo.uuid)) {
+        saved.add(photo.uuid!);
+      }
+    }
   }
 }
